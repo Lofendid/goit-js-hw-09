@@ -25,6 +25,9 @@ const handleInput = (e) => {
     if (e.target.name === 'message') userFeedback.message = e.target.value;
     const strUserFeedback = JSON.stringify(userFeedback);
     localStorage.setItem(LS_FEEDBACK, strUserFeedback);
+    if (userFeedback.email === '' && userFeedback.message === '') { 
+        localStorage.removeItem(LS_FEEDBACK);
+    }; 
 };
 
 const handleSubmit = (e) => {
