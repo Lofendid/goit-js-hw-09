@@ -8,5 +8,5 @@ import"./assets/modulepreload-polyfill-ec808ebb.js";/* empty css                
             />
         </a>
     </li>
-    `;i.push(t)});c.insertAdjacentHTML("beforeend",i.join(""));new e(".gallery a",{navText:['<svg width="24" height="24"><use href="img/icons.svg#icon-left"></svg>','<svg width="24" height="24"><use href="img/icons.svg#icon-right"></svg>'],captionsData:"alt",captionDelay:250});
+    `;i.push(t)});c.insertAdjacentHTML("beforeend",i.join(""));new e(".gallery a",{navText:['<svg width="24" height="24"><use href="/img/icons.svg#icon-left"></svg>','<svg width="24" height="24"><use href="/img/icons.svg#icon-right"></svg>'],captionsData:"alt",captionDelay:250});
 //# sourceMappingURL=commonHelpers.js.map
