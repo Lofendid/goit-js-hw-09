@@ -87,15 +87,15 @@ const gallery = document.querySelector('.gallery');
     galleryItems.push(markup);
   });
 
-  gallery.insertAdjacentHTML('beforeend', galleryItems.join(''));
-
-// import leftIcon from '/img/icons.svg#icon-left.svg'
-// import rightIcon from '/img/icons.svg#icon-right.svg'
+gallery.insertAdjacentHTML('beforeend', galleryItems.join(''));
+  
+const iconLeft = new URL('/img/icons.svg#icon-left', import.meta.url).href;
+const iconRight = new URL('/img/icons.svg#icon-right', import.meta.url).href;
 
 const modale = new SimpleLightbox('.gallery a', {
   navText: [
-    `<svg width="24" height="24"><use href="src/img/icons.svg#icon-left"></svg>`,
-    `<svg width="24" height="24"><use href="src/img/icons.svg#icon-right"></svg>`
+    `<svg width="24" height="24"><use href="${iconLeft}"></svg>`,
+    `<svg width="24" height="24"><use href="${iconRight}"></svg>`
   ],
   captionsData: "alt",
   captionDelay: 250,
