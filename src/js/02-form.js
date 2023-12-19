@@ -16,16 +16,15 @@ const LS_FEEDBACK = 'feedback-form-state';
 if (localStorage.getItem(LS_FEEDBACK)) {
     parsedFeedback = JSON.parse(localStorage.getItem(LS_FEEDBACK));
 
-    // Чи можно таким чином:
-    userEmail.value = userFeedback.email = parsedFeedback.email;
-    userMessage.value = userFeedback.message = parsedFeedback.message;
-    // Присвоювати значення одразу двом змінним, чи не бажано?
-
+    userEmail.value = parsedFeedback.email;
+    userFeedback.email = parsedFeedback.email;
+    userMessage.value = parsedFeedback.message;
+    userFeedback.message = parsedFeedback.message;
 };
 
 const handleInput = (e) => {
-    if (e.target.name === 'email') userFeedback.email = e.target.value;
-    if (e.target.name === 'message') userFeedback.message = e.target.value;
+    if (e.target.name === 'email') userFeedback.email = e.target.value.trim();
+    if (e.target.name === 'message') userFeedback.message = e.target.value.trim();
     const strUserFeedback = JSON.stringify(userFeedback);
     localStorage.setItem(LS_FEEDBACK, strUserFeedback);
     if (userFeedback.email === '' && userFeedback.message === '') { 
@@ -35,8 +34,11 @@ const handleInput = (e) => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(userFeedback);
     e.currentTarget.reset();
     localStorage.removeItem(LS_FEEDBACK);
+    userFeedback.email = '';
+    userFeedback.message = '';
 };
 
 feedbackForm.addEventListener('input', handleInput);

@@ -1,3 +1,5 @@
+import "simplelightbox/dist/simple-lightbox.min.css";
+import SimpleLightbox from "simplelightbox";
 
 const images = [
   {
@@ -65,15 +67,10 @@ const images = [
   },
 ];
 
-import "simplelightbox/dist/simple-lightbox.min.css";
-import SimpleLightbox from "simplelightbox";
-
 const gallery = document.querySelector('.gallery');
 
-  const galleryItems = [];
-
-  images.map(({ preview, original, description }) => {
-    const markup = `
+const galleryMarkup = images.map(({ preview, original, description }) => {
+  return `
     <li class="gallery-item">
         <a class="gallery-link" href="${original}">
             <img
@@ -84,19 +81,11 @@ const gallery = document.querySelector('.gallery');
         </a>
     </li>
     `
-    galleryItems.push(markup);
-  });
+  }).join('');
 
-gallery.insertAdjacentHTML('beforeend', galleryItems.join(''));
-  
-const iconLeft = new URL('/img/icons.svg#icon-left', import.meta.url).href;
-const iconRight = new URL('/img/icons.svg#icon-right', import.meta.url).href;
+gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
-const modale = new SimpleLightbox('.gallery a', {
-  navText: [
-    `<svg width="24" height="24"><use href="${iconLeft}"></svg>`,
-    `<svg width="24" height="24"><use href="${iconRight}"></svg>`
-  ],
+new SimpleLightbox('.gallery a', {
   captionsData: "alt",
   captionDelay: 250,
 });
