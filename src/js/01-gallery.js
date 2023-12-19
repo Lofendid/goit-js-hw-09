@@ -89,12 +89,13 @@ const gallery = document.querySelector('.gallery');
 
   gallery.insertAdjacentHTML('beforeend', galleryItems.join(''));
 
-
+// import leftIcon from '/img/icons.svg#icon-left.svg'
+// import rightIcon from '/img/icons.svg#icon-right.svg'
 
 const modale = new SimpleLightbox('.gallery a', {
   navText: [
-    '<svg width="24" height="24"><use href="img/icons.svg#icon-left"></svg>',
-    '<svg width="24" height="24"><use href="img/icons.svg#icon-right"></svg>'
+    `<svg width="24" height="24"><use href="/img/icons.svg#icon-left"></svg>`,
+    `<svg width="24" height="24"><use href="/img/icons.svg#icon-right"></svg>`
   ],
   captionsData: "alt",
   captionDelay: 250,
