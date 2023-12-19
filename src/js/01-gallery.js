@@ -94,8 +94,8 @@ const gallery = document.querySelector('.gallery');
 
 const modale = new SimpleLightbox('.gallery a', {
   navText: [
-    `<svg width="24" height="24"><use href="/img/icons.svg#icon-left"></svg>`,
-    `<svg width="24" height="24"><use href="/img/icons.svg#icon-right"></svg>`
+    `<svg width="24" height="24"><use href="src/img/icons.svg#icon-left"></svg>`,
+    `<svg width="24" height="24"><use href="src/img/icons.svg#icon-right"></svg>`
   ],
   captionsData: "alt",
   captionDelay: 250,
