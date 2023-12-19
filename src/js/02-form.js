@@ -1,23 +1,26 @@
-
 const feedbackForm = document.querySelector('.feedback-form');
 
 const userEmail = feedbackForm.querySelector('input[type="email"]');
-userEmail.value = '';
 
 const userMessage = feedbackForm.querySelector('textarea');
-userMessage.value = '';
 
-const userFeedback = {};
+const userFeedback = {
+    email: '',
+    message: '',
+};
+
+let parsedFeedback;
 
 const LS_FEEDBACK = 'feedback-form-state';
 
 if (localStorage.getItem(LS_FEEDBACK)) {
-    const parsedFeedback = JSON.parse(localStorage.getItem(LS_FEEDBACK));
+    parsedFeedback = JSON.parse(localStorage.getItem(LS_FEEDBACK));
 
-    // ЧИ МОЖНО ТАКИМ:
+    // Чи можно таким чином:
     userEmail.value = userFeedback.email = parsedFeedback.email;
     userMessage.value = userFeedback.message = parsedFeedback.message;
-    // ЧИНОМ ПРИСВОЮВАТИ ОДРАЗУ ДВОМ ЗМІННИМ ЗНАЧЕННЯ, ЧИ НЕ БАЖАНО?
+    // Присвоювати значення одразу двом змінним, чи не бажано?
+
 };
 
 const handleInput = (e) => {
@@ -38,5 +41,9 @@ const handleSubmit = (e) => {
 
 feedbackForm.addEventListener('input', handleInput);
 feedbackForm.addEventListener('submit', handleSubmit);
+
+
+
+
 
 

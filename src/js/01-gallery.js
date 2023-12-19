@@ -70,8 +70,10 @@ import SimpleLightbox from "simplelightbox";
 
 const gallery = document.querySelector('.gallery');
 
-images.map(({preview, original, description}) => {
-    gallery.insertAdjacentHTML('beforeend', `
+  const galleryItems = [];
+
+  images.map(({ preview, original, description }) => {
+    const markup = `
     <li class="gallery-item">
         <a class="gallery-link" href="${original}">
             <img
@@ -81,13 +83,18 @@ images.map(({preview, original, description}) => {
             />
         </a>
     </li>
-    `);
-});
+    `
+    galleryItems.push(markup);
+  });
+
+  gallery.insertAdjacentHTML('beforeend', galleryItems.join(''));
+
+
 
 const modale = new SimpleLightbox('.gallery a', {
   navText: [
-    '<svg width="24" height="24"><use href="/img/icons.svg#icon-left"></svg>',
-    '<svg width="24" height="24"><use href="/img/icons.svg#icon-right"></svg>'
+    '<svg width="24" height="24"><use href="/icons.svg#icon-left"></svg>',
+    '<svg width="24" height="24"><use href="/icons.svg#icon-right"></svg>'
   ],
   captionsData: "alt",
   captionDelay: 250,
