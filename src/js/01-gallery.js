@@ -1,8 +1,8 @@
 import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from "simplelightbox";
 
-const iconLeft = new URL('/img/icons.svg#icon-left', import.meta.url).href; 
-const iconRight = new URL('/img/icons.svg#icon-right', import.meta.url).href; 
+const iconLeft = new URL('../img/icons.svg#icon-left', import.meta.url).href; 
+const iconRight = new URL('../img/icons.svg#icon-right', import.meta.url).href; 
 
 const images = [
   {
