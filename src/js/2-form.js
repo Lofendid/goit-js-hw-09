@@ -26,10 +26,10 @@ const handleInput = ({target: {name, value}}) => {
 };
 
 const handleSubmit = (e) => {
-    if (userFeedback.email === '' || userFeedback.message === '') { 
+    if (!userFeedback.email || !userFeedback.message) { 
         alert('Both inputs must be filled');
         return;
-    }; 
+    };
     e.preventDefault();
     console.log(userFeedback);
     e.currentTarget.reset();
