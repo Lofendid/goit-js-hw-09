@@ -1,48 +1,45 @@
 const feedbackForm = document.querySelector('.feedback-form');
-
 const userEmail = feedbackForm.querySelector('input[type="email"]');
-
 const userMessage = feedbackForm.querySelector('textarea');
 
-const userFeedback = {
-    email: '',
-    message: '',
-};
-
+let userFeedback = {};
 let parsedFeedback;
 
 const LS_FEEDBACK = 'feedback-form-state';
 
-if (localStorage.getItem(LS_FEEDBACK)) {
-    parsedFeedback = JSON.parse(localStorage.getItem(LS_FEEDBACK));
+const onRender = () => { 
+    if (localStorage.getItem(LS_FEEDBACK)) {
+        parsedFeedback = JSON.parse(localStorage.getItem(LS_FEEDBACK));
 
-    userEmail.value = parsedFeedback.email;
-    userFeedback.email = parsedFeedback.email;
-    userMessage.value = parsedFeedback.message;
-    userFeedback.message = parsedFeedback.message;
+        userEmail.value = parsedFeedback.email || '';
+        userFeedback.email = parsedFeedback.email;
+        userMessage.value = parsedFeedback.message || '';
+        userFeedback.message = parsedFeedback.message;
+    };
+    
 };
 
-const handleInput = (e) => {
-    if (e.target.name === 'email') userFeedback.email = e.target.value.trim();
-    if (e.target.name === 'message') userFeedback.message = e.target.value.trim();
+const handleInput = ({target: {name, value}}) => {
+    userFeedback[name] = value.trim();
     const strUserFeedback = JSON.stringify(userFeedback);
     localStorage.setItem(LS_FEEDBACK, strUserFeedback);
-    if (userFeedback.email === '' && userFeedback.message === '') { 
-        localStorage.removeItem(LS_FEEDBACK);
-    }; 
 };
 
 const handleSubmit = (e) => {
+    if (userFeedback.email === '' || userFeedback.message === '') { 
+        alert('Both inputs must be filled');
+        return;
+    }; 
     e.preventDefault();
     console.log(userFeedback);
     e.currentTarget.reset();
     localStorage.removeItem(LS_FEEDBACK);
-    userFeedback.email = '';
-    userFeedback.message = '';
+    userFeedback = {};
 };
 
 feedbackForm.addEventListener('input', handleInput);
 feedbackForm.addEventListener('submit', handleSubmit);
+document.addEventListener('DOMContentLoaded', onRender);
 
 
 
